@@ -13,6 +13,9 @@ class SampleHandler: RPBroadcastSampleHandler {
     var lastSendTs: Int64 = Int64(Date().timeIntervalSince1970 * 1000)
     var timer: Timer?
 
+    
+    
+    
 
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         if let setupInfo = setupInfo, let channel = setupInfo["loop"] as? String {
