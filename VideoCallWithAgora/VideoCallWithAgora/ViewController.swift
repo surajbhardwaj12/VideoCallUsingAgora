@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     // Update with the App ID of your project generated on Agora Console.
     let appID = "f78ae08b866747b0856400d46bbfc9eb"
     // Update with the temporary token generated in Agora Console.
-    var token = "007eJxTYOhL3XGvOHn+Ibe2v6l8O/REn77ytSiwONQhce+8x8JV1kcVGNLMLRJTDSySLMzMzE3MkwwsTM1MDAxSTMySktKSLVOT/qxNSG4IZGS4vrWLlZEBAkF8Foac/PwCBgYAuo8hkg=="
+    var token = "007eJxTYKgvYJTK+6Dov9qXLXe7JLtN7dsNT7Y/jXH+9/dqzPuQeB4FhjRzi8RUA4skCzMzcxPzJAMLUzMTA4MUE7OkpLRky9Qks/+JyQ2BjAyJrzMYGRkgEMRnYcjJzy9gYAAAJLIfjQ=="
     // Update with the channel name you used to generate the token in Agora Console.
     var channelName = "loop"
 
