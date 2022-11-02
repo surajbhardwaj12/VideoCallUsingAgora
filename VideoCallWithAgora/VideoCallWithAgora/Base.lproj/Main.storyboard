@@ -33,17 +33,31 @@
                                     <outletCollection property="gestureRecognizers" destination="tIT-8g-tBx" appends="YES" id="Enb-oz-J3m"/>
                                 </connections>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hqb-IC-d7d">
+                                <rect key="frame" x="310" y="83.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="9z1-PF-mu0"/>
+                                    <constraint firstAttribute="width" constant="20" id="MxO-ww-fll"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nsO-z1-EqR">
+                                <rect key="frame" x="310" y="284" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="44H-1G-pFE"/>
+                                    <constraint firstAttribute="height" constant="20" id="UgF-SO-xlD"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-cD-77B">
-                                <rect key="frame" x="5" y="548" width="404" height="284"/>
+                                <rect key="frame" x="5" y="762" width="404" height="70"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9It-1A-rQG">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="284"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="70"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6Y-S5-7YB">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="284"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0s-Rs-eeW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="284"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="mic"/>
                                                         <connections>
@@ -51,7 +65,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="S0s-Rs-eeW" firstAttribute="leading" secondItem="d6Y-S5-7YB" secondAttribute="leading" id="5hj-Ft-CgY"/>
                                                     <constraint firstAttribute="trailing" secondItem="S0s-Rs-eeW" secondAttribute="trailing" id="DPo-eR-MZx"/>
@@ -60,18 +74,18 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6f-Kp-ieo">
-                                                <rect key="frame" x="83" y="0.0" width="72.5" height="284"/>
+                                                <rect key="frame" x="83" y="0.0" width="72.5" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Tt-RW-l3Z">
-                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="284"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="70"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="Button" image="mute_speaker"/>
+                                                        <state key="normal" title="Button" image="video"/>
                                                         <connections>
-                                                            <action selector="btnSpeakerClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QUe-he-rqk"/>
+                                                            <action selector="btnVideoClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mce-99-Krs"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="6Tt-RW-l3Z" secondAttribute="bottom" id="14c-cZ-MvA"/>
                                                     <constraint firstItem="6Tt-RW-l3Z" firstAttribute="top" secondItem="R6f-Kp-ieo" secondAttribute="top" id="9Na-P8-SMr"/>
@@ -80,10 +94,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5i-cN-Fmo">
-                                                <rect key="frame" x="165.5" y="0.0" width="73" height="284"/>
+                                                <rect key="frame" x="165.5" y="0.0" width="73" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azb-nL-qoK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="284"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="call"/>
@@ -92,7 +106,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="azb-nL-qoK" secondAttribute="trailing" id="KNx-me-2tq"/>
                                                     <constraint firstItem="azb-nL-qoK" firstAttribute="top" secondItem="G5i-cN-Fmo" secondAttribute="top" id="Qja-aT-5jk"/>
@@ -101,10 +115,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-KM-Ibu">
-                                                <rect key="frame" x="248.5" y="0.0" width="72.5" height="284"/>
+                                                <rect key="frame" x="248.5" y="0.0" width="72.5" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vE2-kC-cn5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="284"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="70"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="switch"/>
                                                         <connections>
@@ -112,7 +126,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="vE2-kC-cn5" firstAttribute="leading" secondItem="qEl-KM-Ibu" secondAttribute="leading" id="AcN-j2-8fs"/>
                                                     <constraint firstItem="vE2-kC-cn5" firstAttribute="top" secondItem="qEl-KM-Ibu" secondAttribute="top" id="BPj-7B-m9C"/>
@@ -121,14 +135,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-T9-IW0">
-                                                <rect key="frame" x="331" y="0.0" width="73" height="284"/>
+                                                <rect key="frame" x="331" y="0.0" width="73" height="70"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pv2-q8-rFl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="284"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="Pv2-q8-rFl" secondAttribute="bottom" id="Eqd-UK-pj3"/>
                                                     <constraint firstAttribute="trailing" secondItem="Pv2-q8-rFl" secondAttribute="trailing" id="QVX-Pn-IjS"/>
@@ -137,6 +151,9 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="999" constant="70" id="Eep-wI-Ye6"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -162,18 +179,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gMb-cD-77B" secondAttribute="bottom" constant="30" id="0CQ-pj-bQR"/>
+                            <constraint firstItem="Hqb-IC-d7d" firstAttribute="top" secondItem="mM1-lG-Uam" secondAttribute="top" constant="10" id="3Dp-Dx-5Gv"/>
                             <constraint firstItem="fX6-W9-jXu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4jm-u4-gcJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SrP-bv-fO2" secondAttribute="trailing" id="6X6-4u-m8k"/>
                             <constraint firstItem="mM1-lG-Uam" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="7xH-Wd-LlB"/>
                             <constraint firstItem="gMb-cD-77B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="CIE-2t-ID7"/>
                             <constraint firstItem="6X8-s2-aLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="IDD-a3-edt"/>
+                            <constraint firstItem="Hqb-IC-d7d" firstAttribute="centerX" secondItem="mM1-lG-Uam" secondAttribute="centerX" id="J29-1Q-Rbz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mM1-lG-Uam" secondAttribute="trailing" constant="30" id="R95-YC-9dC"/>
                             <constraint firstItem="fX6-W9-jXu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ucv-cs-1rb"/>
+                            <constraint firstItem="nsO-z1-EqR" firstAttribute="bottom" secondItem="mM1-lG-Uam" secondAttribute="bottom" constant="-10" id="bDa-Je-2hb"/>
                             <constraint firstItem="SrP-bv-fO2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ciB-vU-ZHL"/>
                             <constraint firstAttribute="trailing" secondItem="gMb-cD-77B" secondAttribute="trailing" constant="5" id="fA9-SE-oiZ"/>
                             <constraint firstItem="SrP-bv-fO2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nJ2-8z-BJT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SrP-bv-fO2" secondAttribute="bottom" id="sx2-2Q-0Mp"/>
                             <constraint firstItem="6X8-s2-aLS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="vvl-bt-yfK"/>
+                            <constraint firstItem="nsO-z1-EqR" firstAttribute="centerX" secondItem="mM1-lG-Uam" secondAttribute="centerX" id="yew-v7-jkP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -183,10 +204,12 @@
                         <outlet property="btnCamera" destination="vE2-kC-cn5" id="mAs-no-GaP"/>
                         <outlet property="btnMic" destination="S0s-Rs-eeW" id="QgZ-ri-EHs"/>
                         <outlet property="btnSpeaker" destination="6Tt-RW-l3Z" id="kTe-ti-Dmv"/>
+                        <outlet property="imgMuteMic" destination="Hqb-IC-d7d" id="Mjm-PV-qyk"/>
+                        <outlet property="imgMuteVideo" destination="nsO-z1-EqR" id="UKT-Hj-AIY"/>
+                        <outlet property="interfaceStack" destination="9It-1A-rQG" id="Jvr-ag-jXY"/>
                         <outlet property="muteSwitch" destination="6X8-s2-aLS" id="nWD-wK-k8r"/>
                         <outlet property="screenShareView" destination="Pv2-q8-rFl" id="1Oz-al-0PX"/>
                         <outlet property="shareView" destination="bmS-T9-IW0" id="Ndo-Zf-HnJ"/>
-                        <outlet property="uiinterfaceStack" destination="9It-1A-rQG" id="Jvr-ag-jXY"/>
                         <outlet property="volumeSlider" destination="fX6-W9-jXu" id="HHq-QR-XCU"/>
                     </connections>
                 </viewController>
@@ -203,8 +226,10 @@
     <resources>
         <image name="call" width="284" height="284"/>
         <image name="mic" width="220" height="220"/>
-        <image name="mute_speaker" width="170.5" height="170.5"/>
+        <image name="mic.slash.fill" catalog="system" width="108" height="128"/>
         <image name="switch" width="220" height="220"/>
+        <image name="video" width="170.5" height="170.5"/>
+        <image name="video.slash.fill" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "mute.png",
+      "filename" : "tiny-video-symbol.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mute@2x.png",
+      "filename" : "tiny-video-symbol@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "mute@3x.png",
+      "filename" : "tiny-video-symbol@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
