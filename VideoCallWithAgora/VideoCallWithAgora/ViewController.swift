@@ -44,13 +44,15 @@ class ViewController: UIViewController {
     var channelName = "loop"
     // The video feed for the local user is displayed here
     var joined: Bool = false
-//    var speaker: Bool = true
+    //    var speaker: Bool = true
     // Volume Control
     var volume: Int = 50
     var isMuted: Bool = false
     var remoteUid: UInt = 0 // Stores the uid of the remote user
     // Screen sharing
     let screenShareExtensionName = "screenSharer"
+    private var initialCenter: CGPoint = .zero
+    
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -61,6 +63,8 @@ class ViewController: UIViewController {
         initializeAgoraEngine()
         localVideo = AgoraRtcVideoCanvas()
         remoteVideo = AgoraRtcVideoCanvas()
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+        LocalView.addGestureRecognizer(panGestureRecognizer)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -116,7 +120,7 @@ class ViewController: UIViewController {
         config.appId = appID
         // Use AgoraRtcEngineDelegate for the following delegate parameter.
         agoraEngine = AgoraRtcEngineKit.sharedEngine(with: config, delegate: self)
-//        agoraEngine.setDefaultAudioRouteToSpeakerphone(speaker)
+        //        agoraEngine.setDefaultAudioRouteToSpeakerphone(speaker)
         
     }
     
@@ -232,24 +236,39 @@ class ViewController: UIViewController {
         systemBroadcastPicker.topAnchor.constraint(equalTo: self.screenShareView.topAnchor).isActive = true
         systemBroadcastPicker.bottomAnchor.constraint(equalTo: self.screenShareView.bottomAnchor).isActive = true
     }
-    
-    //MARK: - Action Method
-    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
-
-        if sender.state == .began || sender.state == .changed {
-            
-            let translation = sender.translation(in: sender.view)
-           
-            let changeX = (sender.view?.center.x)! + translation.x
-            let changeY = (sender.view?.center.y)! + translation.y
-            
-            sender.view?.center = CGPoint(x: changeX, y: changeY)
-            print(changeY)
-            print(changeX)
-            sender.setTranslation(CGPoint.zero, in: sender.view)
+    @objc func didPan(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self.view)
+        
+        let newX = sender.view!.center.x + translation.x
+        let newY = sender.view!.center.y + translation.y
+        let senderWidth = sender.view!.bounds.width / 2
+        let senderHight = sender.view!.bounds.height / 2
+        
+        if newX <= senderWidth
+        {
+            sender.view!.center = CGPoint(x: senderWidth, y: sender.view!.center.y + translation.y)
         }
+        else if newX >= self.view.bounds.maxX - senderWidth
+        {
+            sender.view!.center = CGPoint(x: self.view.bounds.maxX - senderWidth, y: sender.view!.center.y + translation.y)
+        }
+        if newY <= senderHight
+        {
+            sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: senderHight)
+        }
+        else if newY >= self.view.bounds.maxY - senderHight
+        {
+            sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: self.view.bounds.maxY - senderHight)
+        }
+        else
+        {
+            sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+        }
+        
+        sender.setTranslation(.zero, in: self.view)
     }
-    @IBAction func btnMicClick(_ sender: UIButton) { 
+    //MARK: - Action Method
+    @IBAction func btnMicClick(_ sender: UIButton) {
         sender.isSelected.toggle()
         if sender.isSelected{
             btnMic.setImage(UIImage(named: "mute"), for: .normal)
@@ -264,7 +283,7 @@ class ViewController: UIViewController {
         
     }
     @IBAction func switchView(_ sender: Any) {
-//        setupLocalVideo()
+        //        setupLocalVideo()
         
     }
     @IBAction func btnCameraClick(_ sender: UIButton) {
@@ -275,14 +294,14 @@ class ViewController: UIViewController {
         sender.isSelected.toggle()
         if sender.isSelected {
             btnSpeaker.setImage(UIImage(named: "muteVideo"), for: .normal)
-//           agoraEngine.muteRemoteVideoStream(remoteUid, mute: true)
+            //           agoraEngine.muteRemoteVideoStream(remoteUid, mute: true)
             agoraEngine.muteLocalVideoStream(true)
             agoraEngine.stopPreview()
             imgMuteVideo.isHidden = false
             
         }else{
             btnSpeaker.setImage(UIImage(named: "video"), for: .normal)
-//           agoraEngine.muteRemoteVideoStream(remoteUid, mute: false)
+            //           agoraEngine.muteRemoteVideoStream(remoteUid, mute: false)
             agoraEngine.muteLocalVideoStream(false)
             agoraEngine.startPreview()
             imgMuteVideo.isHidden = true
