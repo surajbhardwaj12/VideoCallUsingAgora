@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     // Update with the App ID of your project generated on Agora Console.
     let appID = "f78ae08b866747b0856400d46bbfc9eb"
     // Update with the temporary token generated in Agora Console.
-    var token = "007eJxTYKgvYJTK+6Dov9qXLXe7JLtN7dsNT7Y/jXH+9/dqzPuQeB4FhjRzi8RUA4skCzMzcxPzJAMLUzMTA4MUE7OkpLRky9Qks/+JyQ2BjAyJrzMYGRkgEMRnYcjJzy9gYAAAJLIfjQ=="
+    var token = "007eJxTYDiy5neydNkmNx3GMzvXXK31+evscUVR4n5fd6C/JA/vmu8KDGnmFompBhZJFmZm5ibmSQYWpmYmBgYpJmZJSWnJlqlJccHJyQ2BjAzH1ygyMEIhiM/CkJOfX8DAAAA11x7W"
     // Update with the channel name you used to generate the token in Agora Console.
     var channelName = "loop"
     // The video feed for the local user is displayed here
@@ -70,6 +70,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        print("viewDid")
     }
     
     //MARK: - CustomMethod
@@ -232,7 +233,23 @@ class ViewController: UIViewController {
         systemBroadcastPicker.bottomAnchor.constraint(equalTo: self.screenShareView.bottomAnchor).isActive = true
     }
     
-    @IBAction func btnMicClick(_ sender: UIButton) {
+    //MARK: - Action Method
+    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+
+        if sender.state == .began || sender.state == .changed {
+            
+            let translation = sender.translation(in: sender.view)
+           
+            let changeX = (sender.view?.center.x)! + translation.x
+            let changeY = (sender.view?.center.y)! + translation.y
+            
+            sender.view?.center = CGPoint(x: changeX, y: changeY)
+            print(changeY)
+            print(changeX)
+            sender.setTranslation(CGPoint.zero, in: sender.view)
+        }
+    }
+    @IBAction func btnMicClick(_ sender: UIButton) { 
         sender.isSelected.toggle()
         if sender.isSelected{
             btnMic.setImage(UIImage(named: "mute"), for: .normal)
@@ -248,6 +265,7 @@ class ViewController: UIViewController {
     }
     @IBAction func switchView(_ sender: Any) {
 //        setupLocalVideo()
+        
     }
     @IBAction func btnCameraClick(_ sender: UIButton) {
         sender.isSelected.toggle()

@@ -31,6 +31,7 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="tIT-8g-tBx" appends="YES" id="Enb-oz-J3m"/>
+                                    <outletCollection property="gestureRecognizers" destination="76d-hg-fKD" appends="YES" id="b1q-oh-yVR"/>
                                 </connections>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hqb-IC-d7d">
@@ -219,6 +220,11 @@
                         <action selector="switchView:" destination="BYZ-38-t0r" id="qNc-PQ-9Ht"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="76d-hg-fKD">
+                    <connections>
+                        <action selector="panGesture:" destination="BYZ-38-t0r" id="20f-ju-cjX"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="132" y="66"/>
         </scene>
