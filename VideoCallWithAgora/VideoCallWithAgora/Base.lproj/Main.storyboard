@@ -19,27 +19,27 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrP-bv-fO2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mM1-lG-Uam">
                                 <rect key="frame" x="256" y="74" width="128" height="240"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hqb-IC-d7d">
+                                        <rect key="frame" x="55.5" y="109.5" width="17" height="20"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="Hqb-IC-d7d" firstAttribute="centerX" secondItem="mM1-lG-Uam" secondAttribute="centerX" id="3P6-lx-JFF"/>
                                     <constraint firstAttribute="height" constant="240" id="TBO-Q1-Dm7"/>
+                                    <constraint firstItem="Hqb-IC-d7d" firstAttribute="centerY" secondItem="mM1-lG-Uam" secondAttribute="centerY" id="VAt-cb-pHZ"/>
                                     <constraint firstAttribute="width" constant="128" id="thG-75-Je9"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="tIT-8g-tBx" appends="YES" id="Enb-oz-J3m"/>
                                 </connections>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hqb-IC-d7d">
-                                <rect key="frame" x="310" y="83.5" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="9z1-PF-mu0"/>
-                                    <constraint firstAttribute="width" constant="20" id="MxO-ww-fll"/>
-                                </constraints>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nsO-z1-EqR">
                                 <rect key="frame" x="310" y="284" width="20" height="20"/>
                                 <constraints>
@@ -100,7 +100,8 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" image="call"/>
+                                                        <state key="normal" image="end"/>
+                                                        <state key="selected" title="Hang" image="call"/>
                                                         <connections>
                                                             <action selector="btnCallClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SIA-6D-OYS"/>
                                                         </connections>
@@ -164,53 +165,35 @@
                                     <constraint firstAttribute="trailing" secondItem="9It-1A-rQG" secondAttribute="trailing" id="rc1-Br-h21"/>
                                 </constraints>
                             </view>
-                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6X8-s2-aLS">
-                                <rect key="frame" x="30" y="124" width="51" height="31"/>
-                            </switch>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fX6-W9-jXu">
-                                <rect key="frame" x="8" y="433" width="398" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="394" id="4kk-r1-CkX"/>
-                                    <constraint firstAttribute="height" constant="30" id="Ihj-cw-2e3"/>
-                                </constraints>
-                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gMb-cD-77B" secondAttribute="bottom" constant="30" id="0CQ-pj-bQR"/>
-                            <constraint firstItem="Hqb-IC-d7d" firstAttribute="top" secondItem="mM1-lG-Uam" secondAttribute="top" constant="10" id="3Dp-Dx-5Gv"/>
-                            <constraint firstItem="fX6-W9-jXu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4jm-u4-gcJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SrP-bv-fO2" secondAttribute="trailing" id="6X6-4u-m8k"/>
                             <constraint firstItem="mM1-lG-Uam" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="7xH-Wd-LlB"/>
                             <constraint firstItem="gMb-cD-77B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="CIE-2t-ID7"/>
-                            <constraint firstItem="6X8-s2-aLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="IDD-a3-edt"/>
-                            <constraint firstItem="Hqb-IC-d7d" firstAttribute="centerX" secondItem="mM1-lG-Uam" secondAttribute="centerX" id="J29-1Q-Rbz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mM1-lG-Uam" secondAttribute="trailing" constant="30" id="R95-YC-9dC"/>
-                            <constraint firstItem="fX6-W9-jXu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ucv-cs-1rb"/>
                             <constraint firstItem="nsO-z1-EqR" firstAttribute="bottom" secondItem="mM1-lG-Uam" secondAttribute="bottom" constant="-10" id="bDa-Je-2hb"/>
                             <constraint firstItem="SrP-bv-fO2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ciB-vU-ZHL"/>
                             <constraint firstAttribute="trailing" secondItem="gMb-cD-77B" secondAttribute="trailing" constant="5" id="fA9-SE-oiZ"/>
                             <constraint firstItem="SrP-bv-fO2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nJ2-8z-BJT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SrP-bv-fO2" secondAttribute="bottom" id="sx2-2Q-0Mp"/>
-                            <constraint firstItem="6X8-s2-aLS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="vvl-bt-yfK"/>
                             <constraint firstItem="nsO-z1-EqR" firstAttribute="centerX" secondItem="mM1-lG-Uam" secondAttribute="centerX" id="yew-v7-jkP"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="LocalView" destination="mM1-lG-Uam" id="5UG-01-G2N"/>
-                        <outlet property="RemoteView" destination="SrP-bv-fO2" id="7NW-Wt-HqB"/>
                         <outlet property="btnCall" destination="azb-nL-qoK" id="Mbm-Cc-ys9"/>
                         <outlet property="btnCamera" destination="vE2-kC-cn5" id="mAs-no-GaP"/>
                         <outlet property="btnMic" destination="S0s-Rs-eeW" id="QgZ-ri-EHs"/>
-                        <outlet property="btnSpeaker" destination="6Tt-RW-l3Z" id="kTe-ti-Dmv"/>
-                        <outlet property="imgMuteMic" destination="Hqb-IC-d7d" id="Mjm-PV-qyk"/>
+                        <outlet property="btnVideo" destination="6Tt-RW-l3Z" id="kTe-ti-Dmv"/>
                         <outlet property="imgMuteVideo" destination="nsO-z1-EqR" id="UKT-Hj-AIY"/>
                         <outlet property="interfaceStack" destination="9It-1A-rQG" id="Jvr-ag-jXY"/>
-                        <outlet property="muteSwitch" destination="6X8-s2-aLS" id="nWD-wK-k8r"/>
+                        <outlet property="localContainer" destination="mM1-lG-Uam" id="5UG-01-G2N"/>
+                        <outlet property="localVideoMutedIndicator" destination="Hqb-IC-d7d" id="Mjm-PV-qyk"/>
+                        <outlet property="remoteContainer" destination="SrP-bv-fO2" id="7NW-Wt-HqB"/>
                         <outlet property="screenShareView" destination="Pv2-q8-rFl" id="1Oz-al-0PX"/>
                         <outlet property="shareView" destination="bmS-T9-IW0" id="Ndo-Zf-HnJ"/>
-                        <outlet property="volumeSlider" destination="fX6-W9-jXu" id="HHq-QR-XCU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -222,16 +205,180 @@
             </objects>
             <point key="canvasLocation" x="132" y="66"/>
         </scene>
+        <!--Video Chat View Controller-->
+        <scene sceneID="woN-kF-zmG">
+            <objects>
+                <viewController id="2pr-rS-pvx" customClass="VideoChatViewController" customModule="testvic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aPx-mz-9qu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFT-VG-e5M" userLabel="remoteVideo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_logo" translatesAutoresizingMaskIntoConstraints="NO" id="xNV-vN-WHI" userLabel="remoteVideoMutedIndicator">
+                                        <rect key="frame" x="156" y="398" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="xNV-vN-WHI" secondAttribute="height" multiplier="1:1" id="1J8-rx-ug5"/>
+                                            <constraint firstAttribute="width" constant="100" id="VH6-w4-3vn"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2826409936" green="0.25691255930000001" blue="0.34382003550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="xNV-vN-WHI" firstAttribute="centerY" secondItem="FFT-VG-e5M" secondAttribute="centerY" constant="17" id="BIf-pu-oS0"/>
+                                    <constraint firstItem="xNV-vN-WHI" firstAttribute="centerX" secondItem="FFT-VG-e5M" secondAttribute="centerX" constant="-1" id="iaf-iU-bxb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzx-Fp-X5A" userLabel="localVideo">
+                                <rect key="frame" x="304" y="80" width="85" height="113.5"/>
+                                <color key="backgroundColor" red="0.51017522810000004" green="0.48047775030000001" blue="0.57149040699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="7rP-v7-dh6"/>
+                                    <constraint firstAttribute="width" secondItem="Fzx-Fp-X5A" secondAttribute="height" multiplier="3:4" id="HW1-Sx-jdq"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4wb-NC-rqe" appends="YES" id="kAt-Xb-yAe"/>
+                                </connections>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9L-3V-rew">
+                                <rect key="frame" x="304" y="80" width="85" height="113.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ean-eL-64b" userLabel="localVideoMutedIndicator">
+                                        <rect key="frame" x="24.5" y="38.5" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="1je-eR-rfj"/>
+                                            <constraint firstAttribute="height" constant="36" id="Opw-F1-lD0"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.51017522810000004" green="0.48047775030000001" blue="0.57149040699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ean-eL-64b" firstAttribute="centerY" secondItem="T9L-3V-rew" secondAttribute="centerY" id="lKa-mI-U5F"/>
+                                    <constraint firstItem="ean-eL-64b" firstAttribute="centerX" secondItem="T9L-3V-rew" secondAttribute="centerX" id="mwm-Oy-vuz"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gE-cX-3Wk" userLabel="muteButton">
+                                <rect key="frame" x="89" y="754.5" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="31K-Gl-MEE"/>
+                                    <constraint firstAttribute="width" secondItem="6gE-cX-3Wk" secondAttribute="height" multiplier="1:1" id="Icm-tr-PVC"/>
+                                </constraints>
+                                <state key="normal" title="Mute" image="mic"/>
+                                <state key="selected" image="mute"/>
+                                <state key="highlighted" image="mic_pressed"/>
+                                <connections>
+                                    <action selector="didClickMuteButton:" destination="2pr-rS-pvx" eventType="touchUpInside" id="vyh-o2-mNV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG8-Yq-6we" userLabel="hangUpButton">
+                                <rect key="frame" x="172" y="747" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EG8-Yq-6we" secondAttribute="height" id="64a-KI-YnH"/>
+                                    <constraint firstAttribute="width" constant="70" id="Iq8-Hq-bZh"/>
+                                </constraints>
+                                <state key="normal" title="Hang Up" image="end"/>
+                                <state key="selected" image="call"/>
+                                <connections>
+                                    <action selector="didClickHangUpButton:" destination="2pr-rS-pvx" eventType="touchUpInside" id="gdS-Xf-sbG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7p9-we-7gx" userLabel="switchCameraButton">
+                                <rect key="frame" x="270" y="754.5" width="55" height="55"/>
+                                <state key="normal" title="Switch Camera" image="switch"/>
+                                <state key="selected" image="switch"/>
+                                <state key="highlighted" image="switch_pressed"/>
+                                <connections>
+                                    <action selector="didClickSwitchCameraButton:" destination="2pr-rS-pvx" eventType="touchUpInside" id="pAG-iR-5EU"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4si-06-5Fx">
+                                <rect key="frame" x="16" y="645" width="195" height="86"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="7dT-tS-c20"/>
+                                    <constraint firstAttribute="width" constant="195" id="Pq8-f2-ehK"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="rPG-DS-OYf" kind="embed" identifier="EmbedLogViewController" id="kiz-zW-Xzo"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E2d-Hu-Yzp"/>
+                        <color key="backgroundColor" red="0.2826409936" green="0.25691255930000001" blue="0.34382003550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EG8-Yq-6we" firstAttribute="leading" secondItem="6gE-cX-3Wk" secondAttribute="trailing" constant="28" id="2c0-bW-iUd"/>
+                            <constraint firstItem="T9L-3V-rew" firstAttribute="height" secondItem="Fzx-Fp-X5A" secondAttribute="height" id="6Z4-kw-B6K"/>
+                            <constraint firstItem="E2d-Hu-Yzp" firstAttribute="trailing" secondItem="Fzx-Fp-X5A" secondAttribute="trailing" constant="25" id="9AG-LP-ufr"/>
+                            <constraint firstItem="T9L-3V-rew" firstAttribute="width" secondItem="Fzx-Fp-X5A" secondAttribute="width" id="Epz-Re-HPw"/>
+                            <constraint firstItem="7p9-we-7gx" firstAttribute="centerY" secondItem="EG8-Yq-6we" secondAttribute="centerY" id="J63-Ro-QuH"/>
+                            <constraint firstItem="6gE-cX-3Wk" firstAttribute="centerY" secondItem="EG8-Yq-6we" secondAttribute="centerY" id="Ku4-9c-X9T"/>
+                            <constraint firstItem="FFT-VG-e5M" firstAttribute="trailing" secondItem="E2d-Hu-Yzp" secondAttribute="trailing" id="PUZ-Go-rpA"/>
+                            <constraint firstItem="7p9-we-7gx" firstAttribute="width" secondItem="6gE-cX-3Wk" secondAttribute="width" id="THZ-VW-f5I"/>
+                            <constraint firstItem="T9L-3V-rew" firstAttribute="top" secondItem="Fzx-Fp-X5A" secondAttribute="top" id="aJU-qv-iT6"/>
+                            <constraint firstItem="EG8-Yq-6we" firstAttribute="top" secondItem="4si-06-5Fx" secondAttribute="bottom" constant="16" id="awB-oG-HG0"/>
+                            <constraint firstItem="FFT-VG-e5M" firstAttribute="leading" secondItem="E2d-Hu-Yzp" secondAttribute="leading" id="epb-J9-hFM"/>
+                            <constraint firstItem="EG8-Yq-6we" firstAttribute="centerX" secondItem="aPx-mz-9qu" secondAttribute="centerX" id="f0U-xp-FyN"/>
+                            <constraint firstItem="7p9-we-7gx" firstAttribute="leading" secondItem="EG8-Yq-6we" secondAttribute="trailing" constant="28" id="pi2-2Q-DlI"/>
+                            <constraint firstItem="FFT-VG-e5M" firstAttribute="bottom" secondItem="E2d-Hu-Yzp" secondAttribute="bottom" id="reu-0b-Ha6"/>
+                            <constraint firstItem="Fzx-Fp-X5A" firstAttribute="top" secondItem="E2d-Hu-Yzp" secondAttribute="top" constant="36" id="wMZ-ge-ZeH"/>
+                            <constraint firstItem="T9L-3V-rew" firstAttribute="leading" secondItem="Fzx-Fp-X5A" secondAttribute="leading" id="wn6-1T-Euz"/>
+                            <constraint firstItem="4si-06-5Fx" firstAttribute="leading" secondItem="E2d-Hu-Yzp" secondAttribute="leading" constant="16" id="xLR-gR-DyT"/>
+                            <constraint firstItem="FFT-VG-e5M" firstAttribute="top" secondItem="aPx-mz-9qu" secondAttribute="top" id="yc8-sj-I6G"/>
+                            <constraint firstItem="7p9-we-7gx" firstAttribute="height" secondItem="6gE-cX-3Wk" secondAttribute="height" id="zSO-NE-T8n"/>
+                            <constraint firstItem="E2d-Hu-Yzp" firstAttribute="bottom" secondItem="EG8-Yq-6we" secondAttribute="bottom" constant="45" id="zrs-ez-kJJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="7p9-we-7gx" id="eJp-Fd-hoP"/>
+                        <outlet property="localContainer" destination="Fzx-Fp-X5A" id="zoI-d3-evt"/>
+                        <outlet property="localVideoMutedIndicator" destination="T9L-3V-rew" id="vf5-0Q-CJM"/>
+                        <outlet property="micButton" destination="6gE-cX-3Wk" id="E81-Ut-8dH"/>
+                        <outlet property="remoteContainer" destination="FFT-VG-e5M" id="bI3-oy-HBr"/>
+                        <outlet property="remoteVideoMutedIndicator" destination="xNV-vN-WHI" id="Saa-Xg-dah"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OBd-dG-LY9" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4wb-NC-rqe">
+                    <connections>
+                        <action selector="didClickLocalContainer:" destination="2pr-rS-pvx" id="OLb-ia-mxe"/>
+                        <outlet property="delegate" destination="2pr-rS-pvx" id="D52-eR-Men"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-743" y="66"/>
+        </scene>
+        <!--LogViewController-->
+        <scene sceneID="5RQ-lu-ulS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Log" referencedIdentifier="LogViewController" id="rPG-DS-OYf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lpR-DD-s8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-927" y="533"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="big_logo" width="100" height="106"/>
         <image name="call" width="284" height="284"/>
+        <image name="end" width="292" height="292"/>
+        <image name="logo" width="39" height="42"/>
         <image name="mic" width="220" height="220"/>
         <image name="mic.slash.fill" catalog="system" width="108" height="128"/>
+        <image name="mic_pressed" width="220" height="220"/>
+        <image name="mute" width="204" height="204"/>
         <image name="switch" width="220" height="220"/>
+        <image name="switch_pressed" width="220" height="220"/>
         <image name="video" width="170.5" height="170.5"/>
         <image name="video.slash.fill" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

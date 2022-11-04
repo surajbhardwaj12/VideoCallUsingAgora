@@ -16,9 +16,11 @@
 		132574F6291100D600F539C1 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13057C4C2910F179008EEF58 /* ReplayKit.framework */; };
 		132574F9291100D600F539C1 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132574F8291100D600F539C1 /* SampleHandler.swift */; };
 		1325750B291100D600F539C1 /* screenSharer.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 132574F5291100D600F539C1 /* screenSharer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		132575132911014100F539C1 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
-		132575162911165200F539C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13133CAB290F8C7E00FAE9BC /* ViewController.swift */; };
-		135C2EFD2913A39D003716F9 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
+		135C2EFF2913F41C003716F9 /* FaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C2EFE2913F41B003716F9 /* FaceNode.swift */; };
+		135C2F002913F4DC003716F9 /* FaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C2EFE2913F41B003716F9 /* FaceNode.swift */; };
+		1386B0C82914E9AD00742B08 /* AppID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386B0C52914E84200742B08 /* AppID.swift */; };
+		1386B0CA2914F00C00742B08 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
+		1386B0CB2914F01700742B08 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
 		13CB0332291396B10030946F /* AINS in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0331291396B10030946F /* AINS */; };
 		13CB0334291396B10030946F /* AudioBeauty in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0333291396B10030946F /* AudioBeauty */; };
 		13CB0336291396B10030946F /* ClearVision in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0335291396B10030946F /* ClearVision */; };
@@ -72,6 +74,8 @@
 		13257503291100D600F539C1 /* BroadcastSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastSetupViewController.swift; sourceTree = "<group>"; };
 		13257505291100D600F539C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		132575122911014100F539C1 /* screenSharingAgoraEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenSharingAgoraEngine.swift; sourceTree = "<group>"; };
+		135C2EFE2913F41B003716F9 /* FaceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceNode.swift; sourceTree = "<group>"; };
+		1386B0C52914E84200742B08 /* AppID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +140,10 @@
 			isa = PBXGroup;
 			children = (
 				13133CA7290F8C7E00FAE9BC /* AppDelegate.swift */,
+				1386B0C52914E84200742B08 /* AppID.swift */,
 				13133CA9290F8C7E00FAE9BC /* SceneDelegate.swift */,
 				13133CAB290F8C7E00FAE9BC /* ViewController.swift */,
+				135C2EFE2913F41B003716F9 /* FaceNode.swift */,
 				13133CAD290F8C7E00FAE9BC /* Main.storyboard */,
 				13133CB0290F8C7F00FAE9BC /* Assets.xcassets */,
 				13133CB2290F8C7F00FAE9BC /* LaunchScreen.storyboard */,
@@ -281,9 +287,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1386B0C82914E9AD00742B08 /* AppID.swift in Sources */,
+				1386B0CB2914F01700742B08 /* screenSharingAgoraEngine.swift in Sources */,
 				13133CAC290F8C7E00FAE9BC /* ViewController.swift in Sources */,
-				135C2EFD2913A39D003716F9 /* screenSharingAgoraEngine.swift in Sources */,
 				13133CA8290F8C7E00FAE9BC /* AppDelegate.swift in Sources */,
+				135C2EFF2913F41C003716F9 /* FaceNode.swift in Sources */,
 				13133CAA290F8C7E00FAE9BC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,9 +300,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				132575162911165200F539C1 /* ViewController.swift in Sources */,
 				132574F9291100D600F539C1 /* SampleHandler.swift in Sources */,
-				132575132911014100F539C1 /* screenSharingAgoraEngine.swift in Sources */,
+				1386B0CA2914F00C00742B08 /* screenSharingAgoraEngine.swift in Sources */,
+				135C2F002913F4DC003716F9 /* FaceNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
