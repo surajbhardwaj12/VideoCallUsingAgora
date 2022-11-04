@@ -37,11 +37,11 @@ class ViewController: UIViewController {
     // By default, set the current user role to broadcaster to both send and receive streams.
     var userRole: AgoraClientRole = .broadcaster
     // Update with the App ID of your project generated on Agora Console.
-    let appID = "f78ae08b866747b0856400d46bbfc9eb"
+    let appID = "06525d0b443c4abd858ea60b88cf94b7"
     // Update with the temporary token generated in Agora Console.
-    var token = "007eJxTYDiy5neydNkmNx3GMzvXXK31+evscUVR4n5fd6C/JA/vmu8KDGnmFompBhZJFmZm5ibmSQYWpmYmBgYpJmZJSWnJlqlJccHJyQ2BjAzH1ygyMEIhiM/CkJOfX8DAAAA11x7W"
+    var token = "007eJxTYJDYui7ec0ErZ+TjXeY2aguZO5/6NV6cNum+/jHzu89dteYrMBiYmRqZphgkmZgYJ5skJqVYmFqkJpoZJFlYJKdZmiSZs15MSW4IZGS4yyLEysgAgSA+C0NJYk42AwMAIf0eiA=="
     // Update with the channel name you used to generate the token in Agora Console.
-    var channelName = "loop"
+    var channelName = "talk"
     // The video feed for the local user is displayed here
     var joined: Bool = false
     //    var speaker: Bool = true
@@ -104,6 +104,7 @@ class ViewController: UIViewController {
         if (result == 0) {
             joined = true
             showMessage(title: "Success", text: "Successfully joined the channel as \(self.userRole)")
+            print(self.userRole)
         }
     }
     
