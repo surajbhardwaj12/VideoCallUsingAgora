@@ -17,7 +17,6 @@
 		132574F9291100D600F539C1 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132574F8291100D600F539C1 /* SampleHandler.swift */; };
 		1325750B291100D600F539C1 /* screenSharer.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 132574F5291100D600F539C1 /* screenSharer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		132575132911014100F539C1 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
-		132575162911165200F539C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13133CAB290F8C7E00FAE9BC /* ViewController.swift */; };
 		135C2EFD2913A39D003716F9 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
 		13CB0332291396B10030946F /* AINS in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0331291396B10030946F /* AINS */; };
 		13CB0334291396B10030946F /* AudioBeauty in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0333291396B10030946F /* AudioBeauty */; };
@@ -292,7 +291,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				132575162911165200F539C1 /* ViewController.swift in Sources */,
 				132574F9291100D600F539C1 /* SampleHandler.swift in Sources */,
 				132575132911014100F539C1 /* screenSharingAgoraEngine.swift in Sources */,
 			);

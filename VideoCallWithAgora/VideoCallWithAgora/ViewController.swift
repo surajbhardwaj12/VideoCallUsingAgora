@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         initViews()
         // The following functions are used when calling Agora APIs
         initializeAgoraEngine()
-        setupVideo()
+//        setupVideo()
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         LocalView.addGestureRecognizer(panGestureRecognizer)
     }
@@ -110,7 +110,7 @@ class ViewController: UIViewController {
     func leaveChannel() {
         agoraEngine.stopPreview()
         let result = agoraEngine.leaveChannel(nil)
-        resetUIView()
+//
         // Check if leaving the channel was successful and set joined Bool accordingly
         if (result == 0) { joined = false }
     }
@@ -157,7 +157,7 @@ class ViewController: UIViewController {
             // In simple use cases, we only need to enable video capturing
             // and rendering once at the initialization step.
             // Note: audio recording and playing is enabled by default.
-            agoraEngine.enableVideo()
+            
             
             // Set video configuration
             // Please go to this page for detailed explanation
@@ -169,7 +169,7 @@ class ViewController: UIViewController {
         }
     func setupLocalVideo() {
 //        // Enable the video module
-//        agoraEngine.enableVideo()
+        agoraEngine.enableVideo()
 //        // Start the local video preview
 //        agoraEngine.startPreview()
         
