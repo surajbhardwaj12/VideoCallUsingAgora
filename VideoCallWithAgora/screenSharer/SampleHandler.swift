@@ -18,7 +18,7 @@ class SampleHandler: RPBroadcastSampleHandler {
     
 
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
-        if let setupInfo = setupInfo, let channel = setupInfo["talk"] as? String {
+        if let setupInfo = setupInfo, let channel = setupInfo["loop"] as? String {
             // In-App Screen Capture
             screenSharingAgoraEngine.startScreenSharing(to: channel)
         } else {
@@ -30,7 +30,7 @@ class SampleHandler: RPBroadcastSampleHandler {
             // this is the reason why channel name is hardcoded to be ScreenShare
             // You may use a dynamic channel name through keychain or userdefaults
             // after enable app group feature
-            screenSharingAgoraEngine.startScreenSharing(to: "talk")
+            screenSharingAgoraEngine.startScreenSharing(to: "loop")
         }
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {[weak self] (timer: Timer) in
