@@ -18,7 +18,7 @@ class SampleHandler: RPBroadcastSampleHandler {
     
 
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
-        if let setupInfo = setupInfo, let channel = setupInfo["loop"] as? String {
+        if let setupInfo = setupInfo, let channel = setupInfo["Abhi"] as? String {
             // In-App Screen Capture
             screenSharingAgoraEngine.startScreenSharing(to: channel)
         } else {
@@ -30,6 +30,7 @@ class SampleHandler: RPBroadcastSampleHandler {
             // this is the reason why channel name is hardcoded to be ScreenShare
             // You may use a dynamic channel name through keychain or userdefaults
             // after enable app group feature
+            print("start screen sharing 7 ")
             screenSharingAgoraEngine.startScreenSharing(to: "loop")
         }
         DispatchQueue.main.async {
@@ -51,18 +52,24 @@ class SampleHandler: RPBroadcastSampleHandler {
 
      override func broadcastPaused() {
          // User has requested to pause the broadcast. Samples will stop being delivered.
+         print("Screen sharing paused")
      }
 
      override func broadcastResumed() {
          // User has requested to resume the broadcast. Samples delivery will resume.
+         print("Screen sharing resume")
      }
 
      override func broadcastFinished() {
+         print("Broad cast finshed")
          timer?.invalidate()
          timer = nil
          screenSharingAgoraEngine.stopScreenSharing()
      }
 
+    override func finishBroadcastWithError(_ error: Error) {
+        print("Stoppppppppp")
+    }
      override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType) {
          DispatchQueue.main.async {[weak self] in
              switch sampleBufferType {
@@ -85,3 +92,4 @@ class SampleHandler: RPBroadcastSampleHandler {
      }
 
 }
+

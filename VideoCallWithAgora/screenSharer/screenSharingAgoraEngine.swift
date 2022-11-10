@@ -15,9 +15,9 @@ class screenSharingAgoraEngine {
     // Update with the App ID of your project generated on Agora Console.
     private static let appID = "f78ae08b866747b0856400d46bbfc9eb"
     // Update with the temporary token generated in Agora Console.
-    private static let  token = "007eJxTYNBaz/Cu4u/jLUyrzj00Xy0i+1MjPFPsw9qd99szNDyfX6xTYEgzt0hMNbBIsjAzMzcxTzKwMDUzMTBIMTFLSkpLtkxN8pqWkdwQyMiw4dkkJkYGCATxWRhy8vMLGBgAwYYhTg=="
+    private static let  token = "007eJxTYGj0WSi+44jB3ZwL7tnebgWJkquOTYo38bb07c7OmMUhxanAkGZukZhqYJFkYWZmbmKeZGBhamZiYJBiYpaUlJZsmZoUMi0nuSGQkeHbgbOMjAwQCOKzMDgmZWQyMAAAmNgdbQ=="
     // Update with the channel name you used to generate the token in Agora Console.
-    private static let  channelName = "loop"
+    private static let  channelName = "Abhi"
     // Return an instance of Agora Engine that is configured for screen sharing
     private static let agoraEngine: AgoraRtcEngineKit = {
 

@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 import AgoraRtcKit
 import ReplayKit
+@available(iOS 15.0, *)
 class ViewController: UIViewController {
     
     //MARK: - Outlet
@@ -28,6 +29,10 @@ class ViewController: UIViewController {
     
     
     //MARK: - Variable
+    
+    let controller = RPBroadcastController()
+    let shareScreenController = SampleHandler()
+    let recorder = RPScreenRecorder.shared()
     var localVideo: AgoraRtcVideoCanvas?
     var remoteVideo: AgoraRtcVideoCanvas?
     var frontCameraDeviceInput: AVCaptureDeviceInput?
@@ -39,7 +44,7 @@ class ViewController: UIViewController {
     // Update with the App ID of your project generated on Agora Console.
     let appID = "f78ae08b866747b0856400d46bbfc9eb"
     // Update with the temporary token generated in Agora Console.
-    var token = "007eJxTYNBaz/Cu4u/jLUyrzj00Xy0i+1MjPFPsw9qd99szNDyfX6xTYEgzt0hMNbBIsjAzMzcxTzKwMDUzMTBIMTFLSkpLtkxN8pqWkdwQyMiw4dkkJkYGCATxWRhy8vMLGBgAwYYhTg=="
+    var token = "007eJxTYJitWnRZYJqWVYahNZ+2z4ZF86ZZvm1bvv1iibn06lWb2k0VGNLMLRJTDSySLMzMzE3MkwwsTM1MDAxSTMySktKSLVOTlhZmJzcEMjK8SmpgYIRCEJ+FISc/v4CBAQDStB54"
     // Update with the channel name you used to generate the token in Agora Console.
     var channelName = "loop"
     // The video feed for the local user is displayed here
@@ -73,9 +78,16 @@ class ViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print("viewDid")
+       
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
+    }
     //MARK: - CustomMethod
     func joinChannel() {
         if !self.checkForPermissions() {
@@ -108,7 +120,10 @@ class ViewController: UIViewController {
     }
     
     func leaveChannel() {
+        let error = NSError(domain: "", code: 401, userInfo: [ NSLocalizedDescriptionKey: "Invalid access token"])
+        shareScreenController.finishBroadcastWithError(error)
         agoraEngine.stopPreview()
+        agoraEngine.stopScreenCapture()
         let result = agoraEngine.leaveChannel(nil)
 //
         // Check if leaving the channel was successful and set joined Bool accordingly
@@ -379,6 +394,7 @@ class ViewController: UIViewController {
             localVideo = nil
             removeFromParent(remoteVideo)
             remoteVideo = nil
+            
             // Check if successfully left the channel and set button title accordingly
             if !joined { btnCall.setImage(UIImage(named: "call"), for: .normal)
                 btnMic.isHidden = true
@@ -390,6 +406,7 @@ class ViewController: UIViewController {
         
     }
 }
+@available(iOS 15.0, *)
 extension ViewController: AgoraRtcEngineDelegate {
     // Callback called when a new host joins the channel
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinedOfUid uid: UInt, elapsed: Int) {
