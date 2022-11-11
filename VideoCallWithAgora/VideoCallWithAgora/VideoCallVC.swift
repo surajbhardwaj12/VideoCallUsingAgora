@@ -9,14 +9,15 @@ import UIKit
 import AVFoundation
 import AgoraRtcKit
 import ReplayKit
-@available(iOS 15.0, *)
-class ViewController: UIViewController {
-    
+class VideoCallVC: UIViewController {
     //MARK: - Outlet
+    @IBOutlet weak var lblLocalVideoPaused: UILabel!
+    @IBOutlet weak var lblLocalMicMuted: UILabel!
+    @IBOutlet weak var btnRecord: UIButton!
     @IBOutlet weak var interfaceStack: UIStackView!
     @IBOutlet weak var shareView: UIView!
     @IBOutlet weak var screenShareView: UIView!
-    @IBOutlet weak var btnSpeaker: UIButton!
+    @IBOutlet weak var btnVideo: UIButton!
     @IBOutlet weak var btnMic: UIButton!
     @IBOutlet weak var btnCall: UIButton!
     @IBOutlet weak var btnCamera: UIButton!
@@ -29,44 +30,101 @@ class ViewController: UIViewController {
     
     
     //MARK: - Variable
-    
+    let recorder = RPScreenRecorder.shared()
+    private var isRecording = false
     let controller = RPBroadcastController()
     let shareScreenController = SampleHandler()
-    let recorder = RPScreenRecorder.shared()
     var localVideo: AgoraRtcVideoCanvas?
     var remoteVideo: AgoraRtcVideoCanvas?
     var frontCameraDeviceInput: AVCaptureDeviceInput?
     var backCameraDeviceInput: AVCaptureDeviceInput?
-    // The main entry point for Video SDK
     var agoraEngine: AgoraRtcEngineKit!
-    // By default, set the current user role to broadcaster to both send and receive streams.
     var userRole: AgoraClientRole = .broadcaster
-    // Update with the App ID of your project generated on Agora Console.
     let appID = "f78ae08b866747b0856400d46bbfc9eb"
-    // Update with the temporary token generated in Agora Console.
-    var token = "007eJxTYJitWnRZYJqWVYahNZ+2z4ZF86ZZvm1bvv1iibn06lWb2k0VGNLMLRJTDSySLMzMzE3MkwwsTM1MDAxSTMySktKSLVOTlhZmJzcEMjK8SmpgYIRCEJ+FISc/v4CBAQDStB54"
-    // Update with the channel name you used to generate the token in Agora Console.
+    var token = "007eJxTYJh/p92kNDFjaaJvj/9BBqXJv/o4P9+MPB0Zpft5csDqpkkKDGnmFompBhZJFmZm5ibmSQYWpmYmBgYpJmZJSWnJlqlJdqy5yQ2BjAxMr/IYGKEQxGdhyMnPL2BgAABJZx7x"
     var channelName = "loop"
-    // The video feed for the local user is displayed here
     var joined: Bool = false
-    //    var speaker: Bool = true
-    // Volume Control
     var volume: Int = 50
     var isMuted: Bool = false
-    var remoteUid: UInt = 0 // Stores the uid of the remote user
-    // Screen sharing
+    var remoteUid: UInt = 0
     let screenShareExtensionName = "screenSharer"
     private var initialCenter: CGPoint = .zero
     
+    var isStart : Bool  = true {
+        didSet{
+            if isStart {
+                btnMic.isHidden = true
+                btnVideo.isHidden = true
+                btnCamera.isHidden = true
+                btnRecord.isHidden = true
+                imgMuteMic.isHidden = true
+                imgMuteVideo.isHidden = true
+                lblLocalMicMuted.isHidden = true
+                lblLocalVideoPaused.isHidden = true
+            }else{
+                btnMic.isHidden = false
+                btnVideo.isHidden = false
+                btnCamera.isHidden = false
+                btnRecord.isHidden = false
+                imgMuteMic.isHidden = true
+                imgMuteVideo.isHidden = true
+                lblLocalMicMuted.isHidden = true
+                lblLocalVideoPaused.isHidden = true
+            }
+        }
+    }
+    
+    var isMicOn : Bool  = true {
+        didSet{
+            if isMicOn {
+                btnMic.setImage(UIImage(named: "mic"), for: .normal)
+                imgMuteMic.isHidden = true
+                agoraEngine.muteLocalAudioStream(false)
+                lblLocalMicMuted.isHidden = true
+            }else{
+                btnMic.setImage(UIImage(named: "mute"), for: .normal)
+                imgMuteMic.isHidden = false
+                agoraEngine.muteLocalAudioStream(true)
+                lblLocalMicMuted.isHidden = false
+            }
+        }
+    }
+    var isVideoOn : Bool  = true {
+        didSet{
+            if isVideoOn {
+                btnVideo.setImage(UIImage(named: "video"), for: .normal)
+                imgMuteVideo.isHidden = true
+                agoraEngine.muteLocalVideoStream(false)
+                agoraEngine.startPreview()
+                lblLocalVideoPaused.isHidden = true
+                
+            }else{
+                btnVideo.setImage(UIImage(named: "muteVideo"), for: .normal)
+                imgMuteVideo.isHidden = false
+                agoraEngine.muteLocalVideoStream(true)
+                agoraEngine.stopPreview()
+                lblLocalVideoPaused.isHidden = false
+            }
+        }
+    }
+    var isRecordOn : Bool  = false {
+        didSet{
+            if isRecordOn {
+                btnRecord.setImage(UIImage(named: "recStart"), for: .normal)
+                print("True")
+            }else{
+                btnRecord.setImage(UIImage(named: "recEnd"), for: .normal)
+                print("false")
+            }
+        }
+    }
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Initializes the video view
-        initViews()
-        // The following functions are used when calling Agora APIs
+        
         initializeAgoraEngine()
-//        setupVideo()
+        initViews()
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         LocalView.addGestureRecognizer(panGestureRecognizer)
     }
@@ -90,6 +148,7 @@ class ViewController: UIViewController {
     }
     //MARK: - CustomMethod
     func joinChannel() {
+        resetUIView()
         if !self.checkForPermissions() {
             showMessage(title: "Error", text: "Permissions were not granted")
             return
@@ -120,25 +179,14 @@ class ViewController: UIViewController {
     }
     
     func leaveChannel() {
-        let error = NSError(domain: "", code: 401, userInfo: [ NSLocalizedDescriptionKey: "Invalid access token"])
-        shareScreenController.finishBroadcastWithError(error)
         agoraEngine.stopPreview()
-        agoraEngine.stopScreenCapture()
         let result = agoraEngine.leaveChannel(nil)
-//
         // Check if leaving the channel was successful and set joined Bool accordingly
         if (result == 0) { joined = false }
     }
     func resetUIView(){
-        btnMic.setImage(UIImage(named: "mic"), for: .normal)
-        btnSpeaker.setImage(UIImage(named: "video"), for: .normal)
-        imgMuteMic.isHidden = true
-        imgMuteVideo.isHidden = true
-        
-        agoraEngine.muteLocalVideoStream(false)
-        agoraEngine.muteLocalAudioStream(false)
-        
-        
+        isMicOn = true
+        isVideoOn = true
     }
     func initializeAgoraEngine() {
         let config = AgoraRtcEngineConfig()
@@ -146,26 +194,15 @@ class ViewController: UIViewController {
         config.appId = appID
         // Use AgoraRtcEngineDelegate for the following delegate parameter.
         agoraEngine = AgoraRtcEngineKit.sharedEngine(with: config, delegate: self)
-        //        agoraEngine.setDefaultAudioRouteToSpeakerphone(speaker)
+        //agoraEngine.setDefaultAudioRouteToSpeakerphone(speaker)
         
     }
     
     func initViews() {
         interfaceStack.heightAnchor.constraint(equalTo: btnCall.widthAnchor).isActive = true
         if !joined{
-            btnMic.isHidden = true
-            btnCamera.isHidden = true
-            btnSpeaker.isHidden = true
-            screenShareView.isHidden = true
-            imgMuteMic.isHidden = true
-            imgMuteVideo.isHidden = true
+            isStart = true
         }
-        volumeSlider.maximumValue = 100
-        volumeSlider.value = 80
-        volumeSlider.addTarget(self, action: #selector(volumeSliderValueChanged), for: .valueChanged)
-        muteSwitch.addTarget(self, action: #selector(muteSwitchValueChanged), for: .touchUpInside)
-        prepareScreenSharing()
-        
     }
     
     func setupVideo() {
@@ -183,23 +220,7 @@ class ViewController: UIViewController {
                                                                                  orientationMode: .adaptative, mirrorMode: .disabled))
         }
     func setupLocalVideo() {
-//        // Enable the video module
         agoraEngine.enableVideo()
-//        // Start the local video preview
-//        agoraEngine.startPreview()
-        
-        //        localVideo!.uid = 0
-        //        localVideo!.renderMode = .hidden
-        //        localVideo!.view = LocalView
-        //        //        if(localVideo!.view == LocmirrorModealView){
-        //        //            localVideo!.view = RemoteView
-        //        //        }else if(localVideo!.view == RemoteView){
-        //        //        localVideo!.view =  LocalView
-        //        //        }else{
-        //        //            localVideo!.view = LocalView
-        //        //        }
-        //        // Set the local video view
-        //        agoraEngine.setupLocalVideo(localVideo!)
         let view = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: LocalView.frame.size))
         localVideo = AgoraRtcVideoCanvas()
         localVideo!.view = view
@@ -208,22 +229,10 @@ class ViewController: UIViewController {
         LocalView.addSubview(localVideo!.view!)
         agoraEngine.setupLocalVideo(localVideo)
         agoraEngine.startPreview()
-    }
-    
-    @objc func buttonAction(sender: UIButton!) {
-        if !joined {
-            joinChannel()
-            // Check if successfully joined the channel and set button title accordingly
-            if joined { btnCall.setImage(UIImage(named: "end"), for: .normal) }
-        } else {
-            leaveChannel()
-            // Check if successfully left the channel and set button title accordingly
-            if !joined { btnCall.setImage(UIImage(named: "call"), for: .normal) }
-        }
+        
     }
     func checkForPermissions() -> Bool {
         var hasPermissions = false
-        
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized: hasPermissions = true
         default: hasPermissions = requestCameraAccess()
@@ -311,7 +320,6 @@ class ViewController: UIViewController {
         {
             sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
         }
-        
         sender.setTranslation(.zero, in: self.view)
     }
     func removeFromParent(_ canvas: AgoraRtcVideoCanvas?) -> UIView? {
@@ -324,7 +332,51 @@ class ViewController: UIViewController {
         }
         return nil
     }
+    func stopRecording() {
+        recorder.stopRecording { [unowned self] (preview, error) in
+            print("Stopped recording")
+            isRecordOn = false
+            guard preview != nil else {
+                print("Preview controller is not available.")
+                return
+            }
+            let alert = UIAlertController(title: "Recording Finished", message: "Would you like to edit or delete your recording?", preferredStyle: .alert)
+             
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction) in
+                self.recorder.discardRecording(handler: { () -> Void in
+                    print("Recording suffessfully deleted.")
+                })
+            })
+             
+            let editAction = UIAlertAction(title: "Edit", style: .default, handler: { (action: UIAlertAction) -> Void in
+                preview?.previewControllerDelegate = self
+                self.present(preview!, animated: true, completion: nil)
+            })
+            alert.addAction(editAction)
+            alert.addAction(deleteAction)
+            self.present(alert, animated: true, completion: nil)
+            recorder.isMicrophoneEnabled = false
+            self.isRecording = false
+        }
+        
+    }
    
+    @objc func startRecording() {
+        print(recorder.isMicrophoneEnabled)
+        recorder.startRecording(withMicrophoneEnabled: true){ [unowned self] (error) in
+            guard error == nil else {
+                print("Failed to start recording")
+                return
+            }
+            if recorder.isRecording {
+            print("Started Recording Successfully")
+            isRecordOn = true
+            self.isRecording = true
+            }
+                   
+                   
+    }
+    }
     func switchView(_ canvas: AgoraRtcVideoCanvas?) {
         let parent = removeFromParent(canvas)
         if parent == LocalView {
@@ -338,17 +390,19 @@ class ViewController: UIViewController {
     //MARK: - Action Method
     @IBAction func btnMicClick(_ sender: UIButton) {
         sender.isSelected.toggle()
-        if sender.isSelected{
-            btnMic.setImage(UIImage(named: "mute"), for: .normal)
-            agoraEngine.muteLocalAudioStream(true)
-            imgMuteMic.isHidden = false
-            
+        if isMicOn{
+            isMicOn = false
         }else{
-            btnMic.setImage(UIImage(named: "mic"), for: .normal)
-            agoraEngine.muteLocalAudioStream(false)
-            imgMuteMic.isHidden = true
+            isMicOn = true
         }
         
+    }
+    @IBAction func btnRecordClick(_ sender: Any) {
+        if !isRecording {
+            startRecording()
+        } else {
+            stopRecording()
+        }
     }
     @IBAction func switchView(_ sender: Any) {
         switchView(localVideo)
@@ -362,18 +416,10 @@ class ViewController: UIViewController {
     @IBAction func btnVideoClick(_ sender: UIButton) {
         sender.isSelected.toggle()
         if sender.isSelected {
-            btnSpeaker.setImage(UIImage(named: "muteVideo"), for: .normal)
-            //           agoraEngine.muteRemoteVideoStream(remoteUid, mute: true)
-            agoraEngine.muteLocalVideoStream(true)
-            agoraEngine.stopPreview()
-            imgMuteVideo.isHidden = false
+           isVideoOn = false
             
         }else{
-            btnSpeaker.setImage(UIImage(named: "video"), for: .normal)
-            //           agoraEngine.muteRemoteVideoStream(remoteUid, mute: false)
-            agoraEngine.muteLocalVideoStream(false)
-            agoraEngine.startPreview()
-            imgMuteVideo.isHidden = true
+           isVideoOn = true
             
             
         }
@@ -383,9 +429,7 @@ class ViewController: UIViewController {
             joinChannel()
             // Check if successfully joined the channel and set button title accordingly
             if joined { btnCall.setImage(UIImage(named: "end"), for: .normal)
-                btnMic.isHidden = false
-                btnCamera.isHidden = false
-                btnSpeaker.isHidden = false
+                isStart = false
                 screenShareView.isHidden = false
             }
         } else {
@@ -394,12 +438,12 @@ class ViewController: UIViewController {
             localVideo = nil
             removeFromParent(remoteVideo)
             remoteVideo = nil
-            
+            if isRecording{
+                stopRecording()
+            }
             // Check if successfully left the channel and set button title accordingly
             if !joined { btnCall.setImage(UIImage(named: "call"), for: .normal)
-                btnMic.isHidden = true
-                btnCamera.isHidden = true
-                btnSpeaker.isHidden = true
+               isStart = true
                 screenShareView.isHidden = true
             }
         }
@@ -407,15 +451,9 @@ class ViewController: UIViewController {
     }
 }
 @available(iOS 15.0, *)
-extension ViewController: AgoraRtcEngineDelegate {
+extension VideoCallVC: AgoraRtcEngineDelegate {
     // Callback called when a new host joins the channel
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinedOfUid uid: UInt, elapsed: Int) {
-//
-//        remoteUid = uid
-//        remoteVideo!.uid = uid
-//        remoteVideo!.renderMode = .hidden
-//        remoteVideo!.view = RemoteView
-//        agoraEngine.setupRemoteVideo(remoteVideo!)
         var parent: UIView = RemoteView
                 if let it = localVideo, let view = it.view {
                     if view.superview == parent {
@@ -434,6 +472,18 @@ extension ViewController: AgoraRtcEngineDelegate {
                 agoraEngine.setupRemoteVideo(remoteVideo!)
         
     }
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didOfflineOfUid uid:UInt, reason:AgoraUserOfflineReason) {
+        if let it = remoteVideo, it.uid == uid {
+            removeFromParent(it)
+            remoteVideo = nil
+        }
+    }
+    func rtcEngineConnectionDidLost(_ engine: AgoraRtcEngineKit) {
+        print("Connection Lost")
+    }
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didLeaveChannelWith stats: AgoraChannelStats) {
+        
+    }
     @objc func volumeSliderValueChanged(_ sender: UISlider) {
         volume = Int(sender.value)
         print("Changing volume to \(volume)")
@@ -447,5 +497,8 @@ extension ViewController: AgoraRtcEngineDelegate {
     }
     
 }
-
-
+extension VideoCallVC: RPPreviewViewControllerDelegate {
+    func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
+        dismiss(animated: true)
+    }
+}
