@@ -122,7 +122,7 @@ class VideoCallVC: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        prepareScreenSharing()
         initializeAgoraEngine()
         initViews()
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
@@ -168,7 +168,11 @@ class VideoCallVC: UIViewController {
         // Join the channel with a temp token. Pass in your token and channel name here
         let result = agoraEngine.joinChannel(
             byToken: token, channelId: channelName, uid: 0, mediaOptions: option,
-            joinSuccess: { (channel, uid, elapsed) in }
+            joinSuccess: { (channel, uid, elapsed) in
+                print(channel)
+                print(uid)
+                print(elapsed)
+            }
         )
         // Check if joining the channel was successful and set joined Bool accordingly
         if (result == 0) {
@@ -287,10 +291,10 @@ class VideoCallVC: UIViewController {
         }
         self.screenShareView.addSubview(systemBroadcastPicker)
         systemBroadcastPicker.translatesAutoresizingMaskIntoConstraints = false
-        systemBroadcastPicker.leftAnchor.constraint(equalTo: self.screenShareView.leftAnchor).isActive = true
-        systemBroadcastPicker.rightAnchor.constraint(equalTo: self.screenShareView.rightAnchor).isActive = true
-        systemBroadcastPicker.topAnchor.constraint(equalTo: self.screenShareView.topAnchor).isActive = true
-        systemBroadcastPicker.bottomAnchor.constraint(equalTo: self.screenShareView.bottomAnchor).isActive = true
+//        systemBroadcastPicker.leftAnchor.constraint(equalTo: self.screenShareView.leftAnchor).isActive = true
+//        systemBroadcastPicker.rightAnchor.constraint(equalTo: self.screenShareView.rightAnchor).isActive = true
+//        systemBroadcastPicker.topAnchor.constraint(equalTo: self.screenShareView.topAnchor).isActive = true
+//        systemBroadcastPicker.bottomAnchor.constraint(equalTo: self.screenShareView.bottomAnchor).isActive = true
     }
     @objc func didPan(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.view)

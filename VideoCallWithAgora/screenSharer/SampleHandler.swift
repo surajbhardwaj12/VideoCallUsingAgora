@@ -18,7 +18,7 @@ class SampleHandler: RPBroadcastSampleHandler {
     
 
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
-        if let setupInfo = setupInfo, let channel = setupInfo["Abhi"] as? String {
+        if let setupInfo = setupInfo, let channel = setupInfo["loop"] as? String {
             // In-App Screen Capture
             screenSharingAgoraEngine.startScreenSharing(to: channel)
         } else {
