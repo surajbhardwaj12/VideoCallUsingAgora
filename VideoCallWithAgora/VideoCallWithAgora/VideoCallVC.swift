@@ -122,7 +122,7 @@ class VideoCallVC: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        prepareScreenSharing()
+        prepareScreenSharing()
         initializeAgoraEngine()
         initViews()
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
@@ -291,10 +291,10 @@ class VideoCallVC: UIViewController {
         }
         self.screenShareView.addSubview(systemBroadcastPicker)
         systemBroadcastPicker.translatesAutoresizingMaskIntoConstraints = false
-//        systemBroadcastPicker.leftAnchor.constraint(equalTo: self.screenShareView.leftAnchor).isActive = true
-//        systemBroadcastPicker.rightAnchor.constraint(equalTo: self.screenShareView.rightAnchor).isActive = true
-//        systemBroadcastPicker.topAnchor.constraint(equalTo: self.screenShareView.topAnchor).isActive = true
-//        systemBroadcastPicker.bottomAnchor.constraint(equalTo: self.screenShareView.bottomAnchor).isActive = true
+        systemBroadcastPicker.leftAnchor.constraint(equalTo: self.screenShareView.leftAnchor).isActive = true
+        systemBroadcastPicker.rightAnchor.constraint(equalTo: self.screenShareView.rightAnchor).isActive = true
+        systemBroadcastPicker.topAnchor.constraint(equalTo: self.screenShareView.topAnchor).isActive = true
+        systemBroadcastPicker.bottomAnchor.constraint(equalTo: self.screenShareView.bottomAnchor).isActive = true
     }
     @objc func didPan(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.view)
@@ -486,7 +486,7 @@ extension VideoCallVC: AgoraRtcEngineDelegate {
         print("Connection Lost")
     }
     func rtcEngine(_ engine: AgoraRtcEngineKit, didLeaveChannelWith stats: AgoraChannelStats) {
-        
+        print("sasdsd")
     }
     @objc func volumeSliderValueChanged(_ sender: UISlider) {
         volume = Int(sender.value)

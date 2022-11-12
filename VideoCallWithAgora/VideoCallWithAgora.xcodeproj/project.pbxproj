@@ -15,11 +15,9 @@
 		13133CB4290F8C7F00FAE9BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13133CB2290F8C7F00FAE9BC /* LaunchScreen.storyboard */; };
 		132574F6291100D600F539C1 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13057C4C2910F179008EEF58 /* ReplayKit.framework */; };
 		1325750B291100D600F539C1 /* screenSharer.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 132574F5291100D600F539C1 /* screenSharer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		132575132911014100F539C1 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
 		13AB14FC29193F9000A9AE89 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132574F8291100D600F539C1 /* SampleHandler.swift */; };
 		13AB14FD291945F700A9AE89 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132574F8291100D600F539C1 /* SampleHandler.swift */; };
 		13AB14FE291945FD00A9AE89 /* VideoCallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13133CAB290F8C7E00FAE9BC /* VideoCallVC.swift */; };
-		13BAF422291A15EA00593A11 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
 		13CB0332291396B10030946F /* AINS in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0331291396B10030946F /* AINS */; };
 		13CB0334291396B10030946F /* AudioBeauty in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0333291396B10030946F /* AudioBeauty */; };
 		13CB0336291396B10030946F /* ClearVision in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0335291396B10030946F /* ClearVision */; };
@@ -32,6 +30,8 @@
 		13CB0344291396B10030946F /* VirtualBackground in Frameworks */ = {isa = PBXBuildFile; productRef = 13CB0343291396B10030946F /* VirtualBackground */; };
 		13F5009C291E16CA00AE3400 /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5009B291E16CA00AE3400 /* HomePageVC.swift */; };
 		13F5009E291E17BD00AE3400 /* channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5009D291E17BD00AE3400 /* channel.swift */; };
+		13F500C2291E77AE00AE3400 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
+		13F500C3291E77BB00AE3400 /* screenSharingAgoraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132575122911014100F539C1 /* screenSharingAgoraEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,7 +297,7 @@
 				13133CAC290F8C7E00FAE9BC /* VideoCallVC.swift in Sources */,
 				13F5009C291E16CA00AE3400 /* HomePageVC.swift in Sources */,
 				13133CA8290F8C7E00FAE9BC /* AppDelegate.swift in Sources */,
-				13BAF422291A15EA00593A11 /* screenSharingAgoraEngine.swift in Sources */,
+				13F500C2291E77AE00AE3400 /* screenSharingAgoraEngine.swift in Sources */,
 				13133CAA290F8C7E00FAE9BC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,8 +307,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13AB14FE291945FD00A9AE89 /* VideoCallVC.swift in Sources */,
+				13F500C3291E77BB00AE3400 /* screenSharingAgoraEngine.swift in Sources */,
 				13AB14FC29193F9000A9AE89 /* SampleHandler.swift in Sources */,
-				132575132911014100F539C1 /* screenSharingAgoraEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

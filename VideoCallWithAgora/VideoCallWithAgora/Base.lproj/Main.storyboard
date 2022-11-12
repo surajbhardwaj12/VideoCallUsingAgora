@@ -126,10 +126,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="404" height="70"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6Y-S5-7YB">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0s-Rs-eeW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="70"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="mic"/>
                                                         <connections>
@@ -146,10 +146,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6f-Kp-ieo">
-                                                <rect key="frame" x="83" y="0.0" width="72.5" height="70"/>
+                                                <rect key="frame" x="69" y="0.0" width="59" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Tt-RW-l3Z">
-                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="70"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Button" image="video"/>
                                                         <connections>
@@ -166,10 +166,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5i-cN-Fmo">
-                                                <rect key="frame" x="165.5" y="0.0" width="73" height="70"/>
+                                                <rect key="frame" x="138" y="0.0" width="59" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azb-nL-qoK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="70"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="call"/>
@@ -187,10 +187,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-KM-Ibu">
-                                                <rect key="frame" x="248.5" y="0.0" width="72.5" height="70"/>
+                                                <rect key="frame" x="207" y="0.0" width="59" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vE2-kC-cn5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="70"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="switch"/>
                                                         <connections>
@@ -207,14 +207,26 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-T9-IW0">
-                                                <rect key="frame" x="331" y="0.0" width="73" height="70"/>
+                                                <rect key="frame" x="276" y="0.0" width="59" height="70"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pv2-q8-rFl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="70"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="59" height="70"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Pv2-q8-rFl" secondAttribute="bottom" id="Eqd-UK-pj3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Pv2-q8-rFl" secondAttribute="trailing" id="QVX-Pn-IjS"/>
+                                                    <constraint firstItem="Pv2-q8-rFl" firstAttribute="leading" secondItem="bmS-T9-IW0" secondAttribute="leading" id="gHY-eV-d6V"/>
+                                                    <constraint firstItem="Pv2-q8-rFl" firstAttribute="top" secondItem="bmS-T9-IW0" secondAttribute="top" id="wLA-1t-TvB"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a02-kY-Snm">
+                                                <rect key="frame" x="345" y="0.0" width="59" height="70"/>
+                                                <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHg-sr-wH7">
-                                                        <rect key="frame" x="10" y="10" width="53" height="50"/>
+                                                        <rect key="frame" x="10" y="10" width="39" height="50"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="recEnd"/>
                                                         <connections>
@@ -222,21 +234,21 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="Pv2-q8-rFl" secondAttribute="bottom" id="Eqd-UK-pj3"/>
-                                                    <constraint firstItem="QHg-sr-wH7" firstAttribute="leading" secondItem="bmS-T9-IW0" secondAttribute="leading" constant="10" id="PBe-1q-YW7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Pv2-q8-rFl" secondAttribute="trailing" id="QVX-Pn-IjS"/>
-                                                    <constraint firstAttribute="trailing" secondItem="QHg-sr-wH7" secondAttribute="trailing" constant="10" id="Wbl-K7-z3Z"/>
-                                                    <constraint firstItem="Pv2-q8-rFl" firstAttribute="leading" secondItem="bmS-T9-IW0" secondAttribute="leading" id="gHY-eV-d6V"/>
-                                                    <constraint firstItem="QHg-sr-wH7" firstAttribute="top" secondItem="bmS-T9-IW0" secondAttribute="top" constant="10" id="uzZ-aE-p9g"/>
-                                                    <constraint firstItem="Pv2-q8-rFl" firstAttribute="top" secondItem="bmS-T9-IW0" secondAttribute="top" id="wLA-1t-TvB"/>
-                                                    <constraint firstAttribute="bottom" secondItem="QHg-sr-wH7" secondAttribute="bottom" constant="10" id="wZu-EY-Fm3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="QHg-sr-wH7" secondAttribute="bottom" constant="10" id="0zT-al-ItC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QHg-sr-wH7" secondAttribute="trailing" constant="10" id="Gf4-KK-iVS"/>
+                                                    <constraint firstItem="QHg-sr-wH7" firstAttribute="top" secondItem="a02-kY-Snm" secondAttribute="top" constant="10" id="d8p-nU-OOy"/>
+                                                    <constraint firstItem="QHg-sr-wH7" firstAttribute="leading" secondItem="a02-kY-Snm" secondAttribute="leading" constant="10" id="tLT-MM-6PW"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="999" constant="70" id="Eep-wI-Ye6"/>
+                                            <constraint firstAttribute="trailing" secondItem="a02-kY-Snm" secondAttribute="trailing" id="ZAn-TQ-Bdo"/>
+                                            <constraint firstItem="a02-kY-Snm" firstAttribute="leading" secondItem="bmS-T9-IW0" secondAttribute="trailing" id="gY4-Uh-Cga"/>
+                                            <constraint firstItem="a02-kY-Snm" firstAttribute="top" secondItem="9It-1A-rQG" secondAttribute="top" id="joS-7I-i0I"/>
+                                            <constraint firstAttribute="bottom" secondItem="a02-kY-Snm" secondAttribute="bottom" id="tXX-xm-jdb"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

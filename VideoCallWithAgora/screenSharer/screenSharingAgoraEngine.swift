@@ -74,14 +74,21 @@ class screenSharingAgoraEngine {
         channelMediaOptions.autoSubscribeVideo = false
         channelMediaOptions.clientRoleType = .broadcaster
 
-        agoraEngine.joinChannel(byToken: token, channelId: channelName, uid: UInt(1001), mediaOptions: channelMediaOptions, joinSuccess: nil)
+        agoraEngine.joinChannel(byToken: token, channelId: channelName, uid: 1, mediaOptions: channelMediaOptions, joinSuccess: nil)
     }
 
 
     // Leave the channel
     static func stopScreenSharing() {
-        agoraEngine.leaveChannel(nil)
-        AgoraRtcEngineKit.destroy()
+        let channelMediaOptions = AgoraRtcChannelMediaOptions()
+        channelMediaOptions.publishMicrophoneTrack = false
+        channelMediaOptions.publishCameraTrack = false
+        channelMediaOptions.publishCustomVideoTrack = true
+        channelMediaOptions.publishCustomAudioTrack = true
+        channelMediaOptions.autoSubscribeAudio = false
+        channelMediaOptions.autoSubscribeVideo = false
+        channelMediaOptions.clientRoleType = .broadcaster
+        agoraEngine.joinChannel(byToken: token, channelId: channelName, uid: 1, mediaOptions: channelMediaOptions, joinSuccess: nil)
     }
 
 
